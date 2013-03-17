@@ -1,3 +1,7 @@
+=== 0.0.4 2013-03-18
+
+* fix gem dependencies
+
 === 0.0.3 2013-03-18
 
 * delete routes of cometio.js and websocketio.js
