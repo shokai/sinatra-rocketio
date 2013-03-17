@@ -4,6 +4,7 @@ sinatra-rocketio
 * Node.js like I/O plugin for Sinatra.
 * Automatically selects from Comet and WebSocket.
 * https://github.com/shokai/sinatra-rocketio
+* https://github.com/shokai/sinatra-rocketio/wiki
 * [Handle 10K+ clients on 1 process](https://github.com/shokai/sinatra-websocketio/wiki/C10K)
 
 
