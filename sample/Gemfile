@@ -1,9 +1,10 @@
-source :rubygems
+source 'https://rubygems.org'
 
 gem 'foreman'
 gem 'rack'
 gem 'sinatra'
 gem 'thin'
+gem 'event_emitter'
 gem 'sinatra-cometio'
 gem 'sinatra-websocketio'
 gem 'haml'

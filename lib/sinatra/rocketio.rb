@@ -1,4 +1,5 @@
 require 'eventmachine'
+require 'event_emitter'
 require 'sinatra/cometio'
 require 'sinatra/websocketio'
 require File.expand_path '../sinatra-rocketio/version', File.dirname(__FILE__)

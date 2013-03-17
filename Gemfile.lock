@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     sinatra-rocketio (0.0.1)
+      event_emitter
       eventmachine
       rack
       sinatra

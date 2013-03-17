@@ -18,6 +18,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency "rack"
   gem.add_dependency "sinatra"
   gem.add_dependency "eventmachine"
+  gem.add_dependency "event_emitter"
   gem.add_dependency "sinatra-contrib"
   gem.add_dependency "sinatra-cometio"
   gem.add_dependency "sinatra-websocketio"
