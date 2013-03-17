@@ -1,3 +1,7 @@
+=== 0.0.2 2013-03-18
+
+* sinatra config - set :rocketio, :cometio => true, :websocket => true
+
 === 0.0.1 2013-03-17
 
 * first release
