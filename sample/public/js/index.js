@@ -1,5 +1,12 @@
 var io = new RocketIO().connect();
 
+$(function(){
+  $("#chat #btn_send").click(post);
+  $("#chat #message").keydown(function(e){
+    if(e.keyCode == 13) post();
+  });
+});
+
 io.on("chat", function(data){
   var m = $("<li>").text(data.name + " : " +data.message);
   $("#chat #timeline").prepend(m);
@@ -7,10 +14,7 @@ io.on("chat", function(data){
 
 io.on("connect", function(session){
   console.log("connect!! "+session);
-  $("#chat #btn_send").click(post);
-  $("#chat #message").keydown(function(e){
-    if(e.keyCode == 13) post();
-  });
+  $("#type").text("type:"+io.type);
 });
 
 io.on("disconnect", function(session){
