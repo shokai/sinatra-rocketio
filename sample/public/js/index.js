@@ -14,7 +14,7 @@ io.on("chat", function(data){
 
 io.on("connect", function(session){
   console.log("connect!! "+session);
-  $("#type").text("type:"+io.type);
+  $("#type").text("type : "+io.type);
 });
 
 io.on("disconnect", function(session){
