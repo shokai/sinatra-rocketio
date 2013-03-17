@@ -13,6 +13,7 @@ require File.dirname(__FILE__)+'/main'
 set :haml, :escape_html => true
 set :cometio, :timeout => 120
 set :websocketio, :port => 8080
+set :rocketio, :comet => true, :websocket => true
 
 case RUBY_PLATFORM
 when /linux/i then EM.epoll

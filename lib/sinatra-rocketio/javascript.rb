@@ -7,9 +7,9 @@ module Sinatra
       js_file_names.each do |i|
         js += case i
               when 'cometio.js'
-                Sinatra::CometIO.javascript 'cometio.js'
+                options[:comet] ? Sinatra::CometIO.javascript('cometio.js') : ''
               when 'websocketio.js'
-                Sinatra::WebSocketIO.javascript 'websocketio.js'
+                options[:websocket] ? Sinatra::WebSocketIO.javascript('websocketio.js') : ''
               else
                 j = ''
                 File.open(File.expand_path "../js/#{i}", File.dirname(__FILE__)) do |f|
