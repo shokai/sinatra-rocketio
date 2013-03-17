@@ -15,7 +15,21 @@ GEM
   specs:
     addressable (2.3.3)
     backports (3.1.1)
+    cookiejar (0.3.0)
     daemons (1.1.9)
+    em-cometio-client (0.0.5)
+      em-http-request
+      event_emitter (>= 0.2.0)
+      eventmachine
+      json
+    em-http-request (1.0.3)
+      addressable (>= 2.2.3)
+      cookiejar
+      em-socksify
+      eventmachine (>= 1.0.0.beta.4)
+      http_parser.rb (>= 0.5.3)
+    em-socksify (0.2.1)
+      eventmachine (>= 1.0.0.beta.4)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
@@ -32,6 +46,7 @@ GEM
     libwebsocket (0.1.7.1)
       addressable
       websocket
+    minitest (4.6.2)
     multi_json (1.7.0)
     multi_xml (0.5.3)
     rack (1.5.2)
@@ -78,5 +93,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  em-cometio-client
+  minitest
   sinatra-rocketio!
   thin
