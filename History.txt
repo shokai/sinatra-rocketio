@@ -1,3 +1,7 @@
+=== 0.0.3 2013-03-18
+
+* delete routes of cometio.js and websocketio.js
+
 === 0.0.2 2013-03-18
 
 * sinatra config - set :rocketio, :cometio => true, :websocket => true
