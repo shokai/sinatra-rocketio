@@ -17,8 +17,16 @@ module Sinatra
 end
 EventEmitter.apply Sinatra::RocketIO
 Sinatra::CometIO.on :* do |event_name, *args|
-  Sinatra::RocketIO.emit event_name, [args, :comet].flatten
+  if args.size > 1
+    Sinatra::RocketIO.emit event_name, args[0], args[1], :comet
+  else
+    Sinatra::RocketIO.emit event_name, args[0], :comet
+  end
 end
 Sinatra::WebSocketIO.on :* do |event_name, *args|
-  Sinatra::RocketIO.emit event_name, [args, :websocket].flatten
+  if args.size > 1
+    Sinatra::RocketIO.emit event_name, args[0], args[1], :websocket
+  else
+    Sinatra::RocketIO.emit event_name, args[0], :websocket
+  end
 end
