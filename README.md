@@ -32,6 +32,7 @@ require 'sinatra'
 require 'sinatra/rocketio'
 set :cometio, :timeout => 120
 set :websocketio, :port => 8080
+set :rocketio, :websocket => true, :comet => true # enable WebSocket and Comet
 
 run Sinatra::Application
 ```
