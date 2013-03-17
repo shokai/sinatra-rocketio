@@ -2,13 +2,13 @@ PATH
   remote: .
   specs:
     sinatra-rocketio (0.0.3)
-      event_emitter
-      eventmachine
-      rack
-      sinatra
-      sinatra-cometio
-      sinatra-contrib
-      sinatra-websocketio
+      event_emitter (>= 0.2.3)
+      eventmachine (>= 1.0.0)
+      rack (>= 1.5.0)
+      sinatra (>= 1.3.6)
+      sinatra-cometio (>= 0.3.4)
+      sinatra-contrib (>= 1.3.2)
+      sinatra-websocketio (>= 0.1.2)
 
 GEM
   remote: https://rubygems.org/
@@ -58,14 +58,14 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.3)
       tilt (~> 1.3, >= 1.3.3)
-    sinatra-cometio (0.3.3)
-      event_emitter (>= 0.2.0)
-      eventmachine
-      httparty
-      json
-      rack
-      sinatra
-      sinatra-contrib
+    sinatra-cometio (0.3.4)
+      event_emitter (>= 0.2.3)
+      eventmachine (>= 1.0.0)
+      httparty (>= 0.10.2)
+      json (>= 1.7.0)
+      rack (>= 1.5.0)
+      sinatra (>= 1.3.6)
+      sinatra-contrib (>= 1.3.2)
     sinatra-contrib (1.3.2)
       backports (>= 2.0)
       eventmachine
@@ -73,20 +73,20 @@ GEM
       rack-test
       sinatra (~> 1.3.0)
       tilt (~> 1.3)
-    sinatra-websocketio (0.1.1)
-      em-websocket
-      em-websocket-client
-      event_emitter (>= 0.2.0)
-      eventmachine
-      json
-      rack
-      sinatra
-      sinatra-contrib
+    sinatra-websocketio (0.1.2)
+      em-websocket (>= 0.5.0)
+      em-websocket-client (>= 0.1.1)
+      event_emitter (>= 0.2.3)
+      eventmachine (>= 1.0.0)
+      json (>= 1.7.0)
+      rack (>= 1.5.0)
+      sinatra (>= 1.3.6)
+      sinatra-contrib (>= 1.3.2)
     thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
-    tilt (1.3.5)
+    tilt (1.3.6)
     websocket (1.0.7)
 
 PLATFORMS

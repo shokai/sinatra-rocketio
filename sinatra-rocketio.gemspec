@@ -15,11 +15,11 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
-  gem.add_dependency "rack"
-  gem.add_dependency "sinatra"
-  gem.add_dependency "eventmachine"
-  gem.add_dependency "event_emitter"
-  gem.add_dependency "sinatra-contrib"
-  gem.add_dependency "sinatra-cometio"
-  gem.add_dependency "sinatra-websocketio"
+  gem.add_dependency "rack", ">= 1.5.0"
+  gem.add_dependency "sinatra", ">= 1.3.6"
+  gem.add_dependency "eventmachine", ">= 1.0.0"
+  gem.add_dependency "event_emitter", ">= 0.2.3"
+  gem.add_dependency "sinatra-contrib", ">= 1.3.2"
+  gem.add_dependency "sinatra-cometio", ">= 0.3.4"
+  gem.add_dependency "sinatra-websocketio", ">= 0.1.2"
 end
