@@ -44,7 +44,7 @@ Client Side
 
 ```html
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="<%= rocket_js %>"></script>
+<script src="<%= rocketio_js %>"></script>
 ```
 ```javascript
 var io = new RocketIO().connect();
