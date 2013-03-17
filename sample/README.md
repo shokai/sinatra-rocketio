@@ -1,8 +1,8 @@
-WebSocket Chat
-==============
+WebSocket/Comet Chat
+====================
 
-* Ruby 1.8.7+ or 1.9.2+
-* sinatra-websocketio with Sinatra1.3+
+* Ruby 1.8.7 or 1.9.2 or 1.9.3 or 2.0.0
+* sinatra-rocketio with Sinatra1.3+
 
 
 Install Dependencies
@@ -23,9 +23,9 @@ Run
 Deploy Heroku
 -------------
 
-    % mkdir ~/websocketio-sample
-    % cp -R ./ ~/websocketio-sample/
-    % cd ~/websocketio-sample
+    % mkdir ~/rocketio-sample
+    % cp -R ./ ~/rocketio-sample/
+    % cd ~/rocketio-sample
     % git init
     % git add ./
     % git commit -m "first sample chat"
