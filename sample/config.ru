@@ -11,6 +11,7 @@ require 'sinatra/rocketio'
 require File.dirname(__FILE__)+'/main'
 
 set :haml, :escape_html => true
+set :cometio, :timeout => 120
 set :websocketio, :port => 8080
 
 case RUBY_PLATFORM
