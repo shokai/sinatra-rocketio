@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.version       = Sinatra::RocketIO::VERSION
   gem.authors       = ["Sho Hashimoto"]
   gem.email         = ["hashimoto@shokai.org"]
-  gem.description   = %q{Node.js like I/O plugin for Sinatra}
+  gem.description   = %q{Node.js like WebSocket/Comet I/O plugin for Sinatra}
   gem.summary       = gem.description
   gem.homepage      = "https://github.com/shokai/sinatra-rocketio"
 
