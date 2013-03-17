@@ -1,0 +1,10 @@
+source :rubygems
+
+gem 'foreman'
+gem 'rack'
+gem 'sinatra'
+gem 'thin'
+gem 'sinatra-cometio'
+gem 'sinatra-websocketio'
+gem 'haml'
+gem 'sass'
