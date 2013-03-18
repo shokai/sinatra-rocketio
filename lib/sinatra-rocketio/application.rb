@@ -8,12 +8,11 @@ module Sinatra
           sleep 1
         end
         if options[:comet]
-          require 'sinatra/cometio'
           app.register Sinatra::CometIO
         end
         if options[:websocket]
-          require 'sinatra/websocketio'
           app.register Sinatra::WebSocketIO
+          Sinatra::WebSocketIO.start
         end
         app.get '/rocketio/rocketio.js' do
           content_type 'application/javascript'

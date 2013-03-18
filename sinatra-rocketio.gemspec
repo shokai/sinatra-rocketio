@@ -20,6 +20,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency "eventmachine", ">= 1.0.0"
   gem.add_dependency "event_emitter", ">= 0.2.3"
   gem.add_dependency "sinatra-contrib", ">= 1.3.2"
-  gem.add_dependency "sinatra-cometio", ">= 0.3.4"
-  gem.add_dependency "sinatra-websocketio", ">= 0.1.2"
+  gem.add_dependency "sinatra-cometio", ">= 0.3.5"
+  gem.add_dependency "sinatra-websocketio", ">= 0.1.3"
 end
