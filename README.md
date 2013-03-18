@@ -148,8 +148,8 @@ Sample App
 ----------
 chat app
 
+- https://github.com/shokai/rocketio-chat-sample
 - https://github.com/shokai/sinatra-rocketio/tree/master/sample
-- http://rocketio-chat.herokuapp.com
 
 
 Contributing
