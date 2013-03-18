@@ -15,20 +15,8 @@ Install Dependencies
 Run
 ---
 
+    % export PORT=5000
+    % export WS_PORT=8080
     % foreman start
 
 => http://localhost:5000
-
-
-Deploy Heroku
--------------
-
-    % mkdir ~/rocketio-sample
-    % cp -R ./ ~/rocketio-sample/
-    % cd ~/rocketio-sample
-    % git init
-    % git add ./
-    % git commit -m "first sample chat"
-    % heroku create --stack cedar
-    % git push heroku master
-    % heroku open
