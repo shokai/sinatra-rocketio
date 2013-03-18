@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.version       = Sinatra::RocketIO::VERSION
   gem.authors       = ["Sho Hashimoto"]
   gem.email         = ["hashimoto@shokai.org"]
-  gem.description   = %q{Node.js like WebSocket/Comet I/O plugin for Sinatra}
+  gem.description   = %q{WebSocket/Comet IO plugin for Sinatra}
   gem.summary       = gem.description
   gem.homepage      = "https://github.com/shokai/sinatra-rocketio"
 
@@ -20,6 +20,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency "eventmachine", ">= 1.0.0"
   gem.add_dependency "event_emitter", ">= 0.2.3"
   gem.add_dependency "sinatra-contrib", ">= 1.3.2"
-  gem.add_dependency "sinatra-cometio", ">= 0.3.5"
-  gem.add_dependency "sinatra-websocketio", ">= 0.1.3"
+  gem.add_dependency "sinatra-cometio", ">= 0.3.6"
+  gem.add_dependency "sinatra-websocketio", ">= 0.1.4"
 end
