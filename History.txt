@@ -1,3 +1,7 @@
+=== 0.0.6 2013-03-19
+
+* update event_emitter.js v0.0.7
+
 === 0.0.5 2013-03-18
 
 * fix gem load flow
