@@ -1,3 +1,5 @@
+EventEmitter.apply Sinatra::RocketIO
+
 module Sinatra
   module RocketIO
 
@@ -24,9 +26,7 @@ module Sinatra
   end
 end
 
-EventEmitter.apply Sinatra::RocketIO
-
-Sinatra::RocketIO.once :regist_events do
+Sinatra::RocketIO.once :start do
   if options[:comet]
     Sinatra::CometIO.on :* do |event_name, *args|
       if args.size > 1

@@ -21,7 +21,7 @@ module Sinatra
         app.routes["GET"].delete_if{|route|
           "/cometio/cometio.js" =~ route[0] or "/websocketio/websocketio.js" =~ route[0]
         }
-        Sinatra::RocketIO.emit :regist_events
+        Sinatra::RocketIO.emit :start
       end
     end
 

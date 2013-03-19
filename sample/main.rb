@@ -2,6 +2,10 @@ class ChatApp < Sinatra::Base
   register Sinatra::RocketIO
   io = Sinatra::RocketIO
 
+  io.once :start do
+    puts "RocketIO start!!!"
+  end
+
   io.on :connect do |session, type|
     puts "new client <#{session}> (type:#{type})"
     push :chat, {:name => "system", :message => "new #{type} client <#{session}>"}
