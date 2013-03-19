@@ -1,3 +1,8 @@
+=== 0.0.8 2013-03-20
+
+* bugfix gem dependencies
+* dispatch "start" event on eventmachine and websocket server start
+
 === 0.0.7 2013-03-19
 
 * not push to unexist client
