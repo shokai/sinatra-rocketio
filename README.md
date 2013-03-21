@@ -52,6 +52,7 @@ Client Side
 ```
 ```javascript
 var io = new RocketIO().connect();
+
 io.on("temperature", function(value){
   console.log("server temperature : " + value);
 }); // => "server temperature : 35"
@@ -66,7 +67,9 @@ io.on("light", function(data){
 Client Side
 
 ```javascript
-io.push("chat", {name: "shokai", message: "hello"}); // client -> server
+io.on("connect", function(session){
+  io.push("chat", {name: "shokai", message: "hello"}); // client -> server
+});
 ```
 
 Server Side
@@ -93,6 +96,7 @@ Server Side
 ```ruby
 io.on :connect do |session, type|
   puts "new client <#{session}> type:#{type}"
+  io.push :hello, "hello new client!!"
 end
 
 io.on :disconnect do |session, type|
