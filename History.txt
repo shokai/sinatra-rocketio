@@ -1,3 +1,8 @@
+=== 0.1.0 2013-03-24
+
+* add ruby client library - Sinatra::RocketIO::Client
+* add route /rocketio/settings
+
 === 0.0.9 2013-03-21
 
 * bugfix javascrip websocket error in push() before connect
