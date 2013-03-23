@@ -5,8 +5,8 @@ PATH
       event_emitter (>= 0.2.4)
       eventmachine (>= 1.0.0)
       sinatra
-      sinatra-cometio (>= 0.3.9)
-      sinatra-websocketio (>= 0.1.7)
+      sinatra-cometio (>= 0.4.0)
+      sinatra-websocketio (>= 0.2.0)
 
 GEM
   remote: https://rubygems.org/

@@ -21,8 +21,8 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "haml"
   gem.add_development_dependency "sass"
 
-  gem.add_dependency "sinatra-cometio", ">= 0.3.9"
-  gem.add_dependency "sinatra-websocketio", ">= 0.1.7"
+  gem.add_dependency "sinatra-cometio", ">= 0.4.0"
+  gem.add_dependency "sinatra-websocketio", ">= 0.2.0"
   gem.add_dependency "sinatra"
   gem.add_dependency "eventmachine", ">= 1.0.0"
   gem.add_dependency "event_emitter", ">= 0.2.4"
