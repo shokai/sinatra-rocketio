@@ -15,13 +15,13 @@ class TestRocketIO < MiniTest::Unit::TestCase
     post_data = {:time => Time.now.to_s, :msg => 'hello!!', :to => nil}
     res = nil
     res2 = nil
-    client = Sinatra::WebSocketIO::Client.new(App.websocketio_url).connect
+    client = Sinatra::RocketIO::Client.new(App.url, :type => :websocket).connect
     client.on :message do |data|
       res = data
     end
 
     client.on :connect do |session|
-      client2 = Sinatra::CometIO::Client.new(App.cometio_url).connect
+      client2 = Sinatra::RocketIO::Client.new(App.url, :type => :comet).connect
       client2.on :connect do |session2|
         post_data['to'] = session2
         client.push :message, post_data
@@ -49,13 +49,13 @@ class TestRocketIO < MiniTest::Unit::TestCase
     post_data = {:time => Time.now.to_s, :msg => 'hello!!', :to => nil}
     res = nil
     res2 = nil
-    client = Sinatra::CometIO::Client.new(App.cometio_url).connect
+    client = Sinatra::RocketIO::Client.new(App.url, :type => :comet).connect
     client.on :message do |data|
       res = data
     end
 
     client.on :connect do |session|
-      client2 = Sinatra::WebSocketIO::Client.new(App.websocketio_url).connect
+      client2 = Sinatra::RocketIO::Client.new(App.url, :type => :websocket).connect
       client2.on :connect do |session2|
         post_data['to'] = session2
         client.push :message, post_data
@@ -64,9 +64,6 @@ class TestRocketIO < MiniTest::Unit::TestCase
         res2 = data
         client2.close
         client.close
-      end
-      client2.on :disconnect do
-        EM.stop_event_loop
       end
     end
 
