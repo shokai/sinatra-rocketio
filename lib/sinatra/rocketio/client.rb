@@ -30,11 +30,7 @@ module Sinatra
         this = self
         if @io
           @io.on :* do |event_name, *args|
-            if args.size > 1
-              this.emit event_name, args[0], args[1]
-            else
-              this.emit event_name, args[0]
-            end
+            this.emit event_name, *args
           end
         end
         self
