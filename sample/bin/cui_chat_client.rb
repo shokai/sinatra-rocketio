@@ -6,27 +6,27 @@ require 'sinatra/rocketio/client'
 
 name = `whoami`.strip || 'shokai'
 
-client = Sinatra::RocketIO::Client.new('http://localhost:5000').connect
-# client = Sinatra::RocketIO::Client.new('http://localhost:5000', :type => :comet).connect
+io = Sinatra::RocketIO::Client.new('http://localhost:5000').connect
+#io = Sinatra::RocketIO::Client.new('http://localhost:5000', :type => :comet).connect
 
-client.on :connect do |session|
-  puts "#{client.type} connect!! (session_id:#{session})"
+io.on :connect do |session|
+  puts "#{io.type} connect!! (session_id:#{session})"
 end
 
-client.on :chat do |data|
+io.on :chat do |data|
   puts "<#{data['name']}> #{data['message']}"
 end
 
-client.on :error do |err|
+io.on :error do |err|
   STDERR.puts err
 end
 
-client.on :disconnect do
+io.on :disconnect do
   puts "disconnected!!"
 end
 
 loop do
   line = STDIN.gets.strip
   next if line.empty?
-  client.push :chat, {:message => line, :name => name}
+  io.push :chat, {:message => line, :name => name}
 end

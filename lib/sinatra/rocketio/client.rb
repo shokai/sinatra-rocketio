@@ -12,7 +12,7 @@ module Sinatra
       end
 
       include EventEmitter
-      attr_reader :settings, :type
+      attr_reader :settings, :type, :io
 
       def initialize(url, opt={:type => :websocket})
         @settings = JSON.parse HTTParty.get("#{url}/rocketio/settings").body
@@ -20,16 +20,16 @@ module Sinatra
 
         if type == :websocket and @settings['websocket']
           @type = :websocket
-          @client = Sinatra::WebSocketIO::Client.new @settings['websocket']
+          @io = Sinatra::WebSocketIO::Client.new @settings['websocket']
         elsif type == :comet and @settings['comet']
           @type = :comet
-          @client = Sinatra::CometIO::Client.new @settings['comet']
+          @io = Sinatra::CometIO::Client.new @settings['comet']
         else
           raise Error, "cannot find #{type} IO #{url}"
         end
         this = self
-        if @client
-          @client.on :* do |event_name, *args|
+        if @io
+          @io.on :* do |event_name, *args|
             if args.size > 1
               this.emit event_name, args[0], args[1]
             else
@@ -41,20 +41,20 @@ module Sinatra
       end
 
       def connect
-        @client.connect
+        @io.connect
         self
       end
 
       def close
-        @client.close
+        @io.close
       end
 
       def push(type, data)
-        @client.push type, data
+        @io.push type, data
       end
 
       def method_missing(name, *args)
-        @client.__send__ name, *args
+        @io.__send__ name, *args
       end
 
     end
