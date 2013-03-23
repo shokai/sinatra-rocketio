@@ -7,6 +7,7 @@ require 'sinatra/rocketio/client'
 name = `whoami`.strip || 'shokai'
 
 client = Sinatra::RocketIO::Client.new('http://localhost:5000').connect
+# client = Sinatra::RocketIO::Client.new('http://localhost:5000', :type => :comet).connect
 
 client.on :connect do |session|
   puts "#{client.type} connect!! (session_id:#{session})"
