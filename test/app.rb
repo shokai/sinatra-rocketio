@@ -14,6 +14,10 @@ class App
     ENV['WS_PORT'] || 8080
   end
 
+  def self.url
+    "http://localhost:#{port}"
+  end
+
   def self.websocketio_url
     "ws://localhost:#{ws_port}"
   end
@@ -21,7 +25,6 @@ class App
   def self.cometio_url
     "http://localhost:#{port}/cometio/io"
   end
-
 
   def self.pid_file
     ENV['PID_FILE'] || "/tmp/sinatra-rocketio-testapp.pid"

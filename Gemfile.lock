@@ -77,6 +77,8 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.3)
   haml
+  httparty
+  json
   minitest
   rake
   sass

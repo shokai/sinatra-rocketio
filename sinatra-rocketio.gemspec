@@ -22,6 +22,8 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "thin"
   gem.add_development_dependency "haml"
   gem.add_development_dependency "sass"
+  gem.add_development_dependency "httparty"
+  gem.add_development_dependency "json"
 
   gem.add_dependency "sinatra-cometio", ">= 0.4.0"
   gem.add_dependency "sinatra-websocketio", ">= 0.2.0"
