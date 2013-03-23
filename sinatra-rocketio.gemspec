@@ -15,6 +15,12 @@ Gem::Specification.new do |gem|
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+
+  gem.add_development_dependency "minitest"
+  gem.add_development_dependency "thin"
+  gem.add_development_dependency "haml"
+  gem.add_development_dependency "sass"
+
   gem.add_dependency "sinatra-cometio", ">= 0.3.9"
   gem.add_dependency "sinatra-websocketio", ">= 0.1.7"
   gem.add_dependency "sinatra"

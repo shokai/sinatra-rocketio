@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 Bundler.require
+require 'sinatra'
 require 'sinatra/base'
 if development?
   $stdout.sync = true
@@ -8,6 +9,8 @@ if development?
   $:.unshift File.expand_path '../lib', File.dirname(__FILE__)
 end
 require 'sinatra/rocketio'
+require 'haml'
+require 'sass'
 require File.dirname(__FILE__)+'/main'
 
 set :haml, :escape_html => true
