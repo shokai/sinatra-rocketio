@@ -8,7 +8,7 @@ WebSocket/Comet Chat
 Install Dependencies
 --------------------
 
-    % gem install bundler foreman
+    % gem install bundler
     % bundle install
 
 
@@ -17,6 +17,6 @@ Run
 
     % export PORT=5000
     % export WS_PORT=8080
-    % foreman start
+    % rackup config.ru -p 5000
 
 => http://localhost:5000
