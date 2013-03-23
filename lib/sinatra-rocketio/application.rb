@@ -18,6 +18,15 @@ module Sinatra
           content_type 'application/javascript'
           @js ||= ERB.new(Sinatra::RocketIO.javascript).result(binding)
         end
+        app.get '/rocketio/settings' do
+          content_type 'application/json'
+          @setting_json ||= (
+                             setting = {}
+                             setting[:websocket] = websocketio_url if Sinatra::RocketIO.options[:websocket]
+                             setting[:comet] = cometio_url if Sinatra::RocketIO.options[:comet]
+                             setting.to_json
+                             )
+        end
         app.routes["GET"].delete_if{|route|
           "/cometio/cometio.js" =~ route[0] or "/websocketio/websocketio.js" =~ route[0]
         }
