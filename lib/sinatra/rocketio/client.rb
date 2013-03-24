@@ -46,7 +46,7 @@ module Sinatra
             connect
           end
           once :connect do
-            Thread.kill @ws_close_thread
+            Thread.kill @ws_close_thread if @ws_close_thread
             @ws_close_thread = nil
           end
         end
