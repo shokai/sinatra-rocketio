@@ -18,7 +18,7 @@ module Sinatra
         @type = opt[:type].to_sym
         @io = nil
         @settings = JSON.parse HTTParty.get("#{url}/rocketio/settings").body
-        @ws_close_timer = nil
+        @ws_close_thread = nil
         self
       end
 
@@ -34,6 +34,21 @@ module Sinatra
         end
         @io.on :* do |event_name, *args|
           this.emit event_name, *args
+        end
+        if @type == :websocket
+          @ws_close_thread = Thread.new do
+            sleep 3
+            Thread.new do
+              close
+            end
+            emit :error, "websocket port is not open"
+            @type = :comet
+            connect
+          end
+          once :connect do
+            Thread.kill @ws_close_thread
+            @ws_close_thread = nil
+          end
         end
         self
       end
