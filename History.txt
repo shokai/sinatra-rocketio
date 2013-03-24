@@ -1,3 +1,7 @@
+=== 0.1.2 2013-03-25
+
+* retry get /rocketio/settings
+
 === 0.1.1 2013-03-25
 
 * ruby client - use comet if websocket port close
