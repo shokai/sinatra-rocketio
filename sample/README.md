@@ -20,3 +20,11 @@ Run
     % rackup config.ru -p 5000
 
 => http://localhost:5000
+
+
+Ruby Client
+-----------
+
+    % ruby bin/cui_chat_client.rb
+    % ruby bin/cui_chat_client.rb http://localhost:5000 websocket
+    % ruby bin/cui_chat_client.rb http://localhost:5000 comet

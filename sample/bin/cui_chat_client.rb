@@ -4,9 +4,11 @@ require 'bundler/setup'
 $:.unshift File.expand_path '../../lib', File.dirname(__FILE__)
 require 'sinatra/rocketio/client'
 
-name = `whoami`.strip || 'shokai'
+name = `whoami`.strip
+url = ARGV.shift || 'http://localhost:5000'
+type = ARGV.shift || :websocket
 
-io = Sinatra::RocketIO::Client.new('http://localhost:5000').connect
+io = Sinatra::RocketIO::Client.new(url, :type => type).connect
 #io = Sinatra::RocketIO::Client.new('http://localhost:5000', :type => :comet).connect
 
 io.on :connect do |session|
