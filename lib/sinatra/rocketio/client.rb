@@ -18,10 +18,10 @@ module Sinatra
         @settings = JSON.parse HTTParty.get("#{url}/rocketio/settings").body
         type = opt[:type].to_sym
 
-        if type == :websocket and @settings['websocket']
+        if type == :websocket and @settings.include? 'websocket'
           @type = :websocket
           @io = Sinatra::WebSocketIO::Client.new @settings['websocket']
-        elsif type == :comet and @settings['comet']
+        elsif type == :comet or @settings.include? 'comet'
           @type = :comet
           @io = Sinatra::CometIO::Client.new @settings['comet']
         else
