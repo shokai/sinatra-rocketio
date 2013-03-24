@@ -4,7 +4,7 @@ require 'bundler/setup'
 $:.unshift File.expand_path '../../lib', File.dirname(__FILE__)
 require 'sinatra/rocketio/client'
 
-name = `whoami`.strip
+name = `whoami`.strip || 'shokai'
 url = ARGV.shift || 'http://localhost:5000'
 type = ARGV.shift || :websocket
 
