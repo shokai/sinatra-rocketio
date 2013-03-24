@@ -14,15 +14,38 @@ module Sinatra
       include EventEmitter
       attr_reader :settings, :type, :io
 
+      public
       def initialize(url, opt={:type => :websocket})
+        @url = url
         @type = opt[:type].to_sym
         @io = nil
-        @settings = JSON.parse HTTParty.get("#{url}/rocketio/settings").body
+        @settings = nil
         @ws_close_thread = nil
         self
       end
 
+      private
+      def get_settings
+        url = "#{@url}/rocketio/settings"
+        begin
+          res = HTTParty.get url
+          unless res.code == 200
+            emit :error, "#{res.code} get error (#{url})"
+            sleep 10
+            get_settings
+          else
+            @settings = JSON.parse res.body
+          end
+        rescue => e
+          emit :error, "#{e} (#{url})"
+          sleep 10
+          get_settings
+        end
+      end
+
+      public
       def connect
+        get_settings unless @settings
         this = self
         if @type == :websocket and @settings.include? 'websocket'
           @io = Sinatra::WebSocketIO::Client.new(@settings['websocket']).connect
@@ -54,11 +77,11 @@ module Sinatra
       end
 
       def close
-        @io.close
+        @io.close if @io
       end
 
       def push(type, data)
-        @io.push type, data
+        @io.push type, data if @io
       end
 
       def method_missing(name, *args)
