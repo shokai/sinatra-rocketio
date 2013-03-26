@@ -26,7 +26,7 @@ class TestRocketIO < MiniTest::Unit::TestCase
     end
 
     50.times do
-      break if res != nil
+      break if res2 != nil
       sleep 0.1
     end
     client.close
@@ -60,7 +60,7 @@ class TestRocketIO < MiniTest::Unit::TestCase
     end
 
     50.times do
-      break if res != nil
+      break if res2 != nil
       sleep 0.1
     end
     client.close

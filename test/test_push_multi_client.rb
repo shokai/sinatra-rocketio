@@ -33,7 +33,7 @@ class TestPushMultiClient < MiniTest::Unit::TestCase
     end
 
     50.times do
-      break if res != nil
+      break if res2 != nil and res3 != nil
       sleep 0.1
     end
     client.close

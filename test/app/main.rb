@@ -1,13 +1,3 @@
-pid_file = ENV['PID_FILE'] || "/tmp/sinatra-rocketio-test-pid"
-EM::defer do
-  while !EM::reactor_running? do
-    sleep 0.1
-  end
-  File.open(pid_file, "w+") do |f|
-    f.write Process.pid.to_s
-  end
-end
-
 class TestApp < Sinatra::Base
   register Sinatra::RocketIO
   io = Sinatra::RocketIO
