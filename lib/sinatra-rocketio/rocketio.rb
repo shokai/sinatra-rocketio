@@ -5,14 +5,10 @@ module Sinatra
 
     def self.push(type, data, opt={})
       if options[:websocket]
-        if !opt[:to] or Sinatra::WebSocketIO.sessions.include? opt[:to]
-          Sinatra::WebSocketIO.push type, data, opt
-        end
+        Sinatra::WebSocketIO.push type, data, opt
       end
       if options[:comet]
-        if !opt[:to] or Sinatra::CometIO.sessions.include? opt[:to]
-          Sinatra::CometIO.push type, data, opt
-        end
+        Sinatra::CometIO.push type, data, opt
       end
     end
 
