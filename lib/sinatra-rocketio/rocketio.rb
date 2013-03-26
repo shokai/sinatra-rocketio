@@ -4,6 +4,11 @@ module Sinatra
   module RocketIO
 
     def self.push(type, data, opt={})
+      if opt.include? :to and opt[:to].kind_of? Array
+        opt[:to].each do |to|
+          push type, data, :to => to
+        end
+      end
       if options[:websocket]
         Sinatra::WebSocketIO.push type, data, opt
       end
