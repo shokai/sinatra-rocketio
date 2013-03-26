@@ -6,10 +6,3 @@ require 'sinatra/rocketio/client'
 require 'httparty'
 require 'json'
 require File.expand_path 'app', File.dirname(__FILE__)
-
-
-['SIGHUP', 'SIGINT', 'SIGKILL', 'SIGTERM'].each do |sig|
-  Kernel.trap sig do
-    App.stop
-  end
-end

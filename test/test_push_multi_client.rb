@@ -2,14 +2,6 @@ require File.expand_path 'test_helper', File.dirname(__FILE__)
 
 class TestPushMultiClient < MiniTest::Unit::TestCase
 
-  def setup
-    App.start
-  end
-
-  def teardown
-    App.stop
-  end
-
   def test_push_multi
     ## client1(comet) --> server --> client2(websocket) & client3(comet)
     post_data = {:time => Time.now.to_s, :msg => 'hello!!', :to => nil}

@@ -2,14 +2,6 @@ require File.expand_path 'test_helper', File.dirname(__FILE__)
 
 class TestRocketIO < MiniTest::Unit::TestCase
 
-  def setup
-    App.start
-  end
-
-  def teardown
-    App.stop
-  end
-
   def test_websocket_to_comet
     ## websocket --> server --> comet
     post_data = {:time => Time.now.to_s, :msg => 'hello!!', :to => nil}

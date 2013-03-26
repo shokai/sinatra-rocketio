@@ -157,6 +157,21 @@ chat app
 - https://github.com/shokai/rocketio-arduino-sample
 
 
+Test
+----
+
+    % gem install bundler
+    % bundle install
+
+start server
+
+    % rake test_server
+
+run test
+
+    % rake test
+
+
 Contributing
 ------------
 
