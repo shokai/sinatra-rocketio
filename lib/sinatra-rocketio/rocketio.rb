@@ -19,8 +19,8 @@ module Sinatra
 
     def self.sessions
       {
-        :websocket => Sinatra::WebSocketIO.sessions,
-        :comet => Sinatra::CometIO.sessions
+        :websocket => Sinatra::WebSocketIO.sessions.keys,
+        :comet => Sinatra::CometIO.sessions.keys
       }
     end
 
