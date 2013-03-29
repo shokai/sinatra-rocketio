@@ -9,6 +9,8 @@ module Sinatra
 end
 
 Sinatra::RocketIO.on :__channel_id do |channel, client|
-  Sinatra::RocketIO.channels[client[:session]] = channel
+  channels[client[:session]] = channel
 end
-
+Sinatra::RocketIO.on :disconnect do |client, type|
+  channels.delete client[:session]
+end
