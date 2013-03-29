@@ -6,22 +6,22 @@ class TestApp < Sinatra::Base
     "sinatra-rocketio v#{Sinatra::RocketIO::VERSION}"
   end
 
-  io.on :connect do |session, type|
-    puts "new client <session:#{session}> <type:#{type}>"
+  io.on :connect do |client|
+    puts "new client <session:#{client.session}> <type:#{client.type}>"
   end
 
-  io.on :disconnect do |session, type|
-    puts "disconnect client <session:#{session}> <type:#{type}>"
+  io.on :disconnect do |client|
+    puts "disconnect client <session:#{client.session}> <type:#{client.type}>"
   end
 
-  io.on :broadcast do |data, from, type|
+  io.on :broadcast do |data, client|
     puts from
-    puts "broadcast <session:#{from}> <type:#{type}> - #{data.to_json}"
+    puts "broadcast <session:#{client.session}> <type:#{client.type}> - #{data.to_json}"
     push :broadcast, data
   end
 
-  io.on :message do |data, from, type|
-    puts "message <session:#{from}> <type:#{type}> - #{data.to_json}"
+  io.on :message do |data, client|
+    puts "message <session:#{client.session}> <type:#{client.type}> - #{data.to_json}"
     push :message, data, :to => data['to']
   end
 
