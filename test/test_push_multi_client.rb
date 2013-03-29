@@ -13,12 +13,12 @@ class TestPushMultiClient < MiniTest::Unit::TestCase
       res = data
     end
 
-    client.on :connect do |session|
+    client.on :connect do
       client2 = Sinatra::RocketIO::Client.new(App.url, :type => :comet).connect
-      client2.on :connect do |session2|
+      client2.on :connect do
         client3 = Sinatra::RocketIO::Client.new(App.url, :type => :websocket).connect
-        client3.on :connect do |session3|
-          post_data[:to] = [session2, session3]
+        client3.on :connect do
+          post_data[:to] = [client2.session, client3.session]
           client.push :message, post_data
         end
         client3.on :message do |data|
