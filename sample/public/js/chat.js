@@ -12,12 +12,12 @@ io.on("chat", function(data){
   $("#chat #timeline").prepend(m);
 });
 
-io.on("connect", function(session){
-  console.log("connect!! "+session);
+io.on("connect", function(){
+  console.log("connect!! "+io.session);
   $("#type").text("type : "+io.type);
 });
 
-io.on("disconnect", function(session){
+io.on("disconnect", function(){
   console.log("disconnect!!");
 });
 

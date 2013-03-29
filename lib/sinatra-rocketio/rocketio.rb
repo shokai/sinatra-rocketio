@@ -37,6 +37,7 @@ end
 Sinatra::RocketIO.once :start do
   if options[:comet]
     Sinatra::CometIO.on :* do |event_name, *args|
+      event_name = :__connect if event_name == :connect
       if args.size > 1
         Sinatra::RocketIO.emit event_name, args[0], Hashie::Mash.new(:session => args[1], :channel => Sinatra::RocketIO.channels[args[1]], :type => :comet)
       else
@@ -46,6 +47,7 @@ Sinatra::RocketIO.once :start do
   end
   if options[:websocket]
     Sinatra::WebSocketIO.on :* do |event_name, *args|
+      event_name = :__connect if event_name == :connect
       if args.size > 1
         Sinatra::RocketIO.emit event_name, args[0], Hashie::Mash.new(:session => args[1], :channel => Sinatra::RocketIO.channels[args[1]], :type => :websocket)
       else
