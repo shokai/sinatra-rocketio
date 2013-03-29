@@ -8,6 +8,7 @@ require File.expand_path '../sinatra-rocketio/options', File.dirname(__FILE__)
 require File.expand_path '../sinatra-rocketio/rocketio', File.dirname(__FILE__)
 require File.expand_path '../sinatra-rocketio/javascript', File.dirname(__FILE__)
 require File.expand_path '../sinatra-rocketio/application', File.dirname(__FILE__)
+require File.expand_path '../sinatra-rocketio/channel', File.dirname(__FILE__)
 
 module Sinatra
   module RocketIO

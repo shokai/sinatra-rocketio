@@ -6,20 +6,20 @@ class ChatApp < Sinatra::Base
     puts "RocketIO start!!!"
   end
 
-  io.on :connect do |session, type|
-    puts "new client <#{session}> (type:#{type})"
-    push :chat, {:name => "system", :message => "new #{type} client <#{session}>"}
-    push :chat, {:name => "system", :message => "welcome <#{session}>"}, {:to => session}
+  io.on :connect do |client, type|
+    puts "new client <#{client[:session]}> (type:#{type})"
+    push :chat, {:name => "system", :message => "new #{type} client <#{client[:session]}>"}, :channel => client[:channel]
+    push :chat, {:name => "system", :message => "welcome <#{client[:session]}>"}, :to => client[:session]
   end
 
-  io.on :disconnect do |session, type|
-    puts "disconnect client <#{session}> (type:#{type})"
-    push :chat, {:name => "system", :message => "bye <#{session}>"}
+  io.on :disconnect do |client, type|
+    puts "disconnect client <#{client[:session]}> (type:#{type})"
+    push :chat, {:name => "system", :message => "bye <#{client[:session]}>"}, :channel => client[:channel]
   end
 
-  io.on :chat do |data, from, type|
-    puts "#{data['name']} : #{data['message']}  (from:#{from} type:#{type})"
-    push :chat, data
+  io.on :chat do |data, client, type|
+    puts "#{data['name']} : #{data['message']}  (session:#{client[:session]} channel:#{client[:channel]} type:#{type})"
+    push :chat, data, :channel => client[:channel]
   end
 
   io.on :error do |err|
@@ -27,7 +27,12 @@ class ChatApp < Sinatra::Base
   end
 
   get '/' do
-    haml :index
+    redirect '/chat/1'
+  end
+
+  get '/chat/:channel' do
+    @channel = params[:channel]
+    haml :chat
   end
 
   get '/:source.css' do

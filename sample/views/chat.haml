@@ -4,14 +4,16 @@
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'UTF-8'}
     %title sinatra-rocketio chat
     %link{:rel => 'stylesheet', :href => "/main.css", :type => 'text/css'}
+    :javascript
+      var channel = "#{@channel}";
     %script{:type => 'text/javascript', :src => "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
     %script{:type => 'text/javascript', :src => rocketio_js}
-    %script{:type => 'text/javascript', :src => "/js/index.js"}
+    %script{:type => 'text/javascript', :src => "/js/chat.js"}
 
   %body
     %div#content
       %div#header
-        %h1 rocketio chat
+        %h1 rocketio chat [channel=#{@channel}]
         %span#type
       %div#main
         %div#chat
