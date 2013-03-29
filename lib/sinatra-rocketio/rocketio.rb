@@ -38,18 +38,18 @@ Sinatra::RocketIO.once :start do
   if options[:comet]
     Sinatra::CometIO.on :* do |event_name, *args|
       if args.size > 1
-        Sinatra::RocketIO.emit event_name, args[0], {:session => args[1], :channel => Sinatra::RocketIO.channels[args[1]]}, :comet
+        Sinatra::RocketIO.emit event_name, args[0], {:session => args[1], :channel => Sinatra::RocketIO.channels[args[1]], :type => :comet}
       else
-        Sinatra::RocketIO.emit event_name, {:session => args[0], :channel => Sinatra::RocketIO.channels[args[0]]}, :comet
+        Sinatra::RocketIO.emit event_name, {:session => args[0], :channel => Sinatra::RocketIO.channels[args[0]], :type => :comet}
       end
     end
   end
   if options[:websocket]
     Sinatra::WebSocketIO.on :* do |event_name, *args|
       if args.size > 1
-        Sinatra::RocketIO.emit event_name, args[0], {:session => args[1], :channel => Sinatra::RocketIO.channels[args[1]]}, :websocket
+        Sinatra::RocketIO.emit event_name, args[0], {:session => args[1], :channel => Sinatra::RocketIO.channels[args[1]], :type => :websocket}
       else
-        Sinatra::RocketIO.emit event_name, {:session => args[0], :channel => Sinatra::RocketIO.channels[args[0]]}, :websocket
+        Sinatra::RocketIO.emit event_name, {:session => args[0], :channel => Sinatra::RocketIO.channels[args[0]], :type => :websocket}
       end
     end
   end
