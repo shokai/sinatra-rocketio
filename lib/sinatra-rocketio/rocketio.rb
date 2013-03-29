@@ -11,7 +11,7 @@ module Sinatra
       elsif opt.include? :channel
         channels.select{|session, channel|
           channel == opt[:channel].to_s
-        }.keys.each do |session|
+        }.each do |session|
           push type, data, :to => session
         end
       else
