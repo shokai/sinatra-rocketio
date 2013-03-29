@@ -12,12 +12,13 @@ module Sinatra
       end
 
       include EventEmitter
-      attr_reader :settings, :type, :io
+      attr_reader :settings, :type, :io, :channel
 
       public
-      def initialize(url, opt={:type => :websocket})
+      def initialize(url, opt={:type => :websocket, :channel => nil})
         @url = url
         @type = opt[:type].to_sym
+        @channel = opt[:channel] ? opt[:channel].to_s : nil
         @io = nil
         @settings = nil
         @ws_close_thread = nil
@@ -56,7 +57,12 @@ module Sinatra
           raise Error, "cannot find #{type} IO #{url}"
         end
         @io.on :* do |event_name, *args|
+          event_name = :__connect if event_name == :connect
           this.emit event_name, *args
+        end
+        this.on :__connect do
+          this.io.push :__channel_id, this.channel
+          this.emit :connect
         end
         if @type == :websocket
           @ws_close_thread = Thread.new do

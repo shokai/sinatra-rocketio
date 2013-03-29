@@ -8,11 +8,11 @@ name = `whoami`.strip || 'shokai'
 url = ARGV.shift || 'http://localhost:5000'
 type = ARGV.shift || :websocket
 
-io = Sinatra::RocketIO::Client.new(url, :type => type).connect
+io = Sinatra::RocketIO::Client.new(url, :type => type, :channel => "1").connect
 #io = Sinatra::RocketIO::Client.new('http://localhost:5000', :type => :comet).connect
 
-io.on :connect do |session|
-  puts "#{io.type} connect!! (session_id:#{session})"
+io.on :connect do
+  puts "#{io.type} connect!! (session_id:#{io.session})"
 end
 
 io.on :chat do |data|
