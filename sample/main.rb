@@ -7,19 +7,19 @@ class ChatApp < Sinatra::Base
   end
 
   io.on :connect do |client|
-    puts "new client <#{client[:session]}> (type:#{client[:type]})"
-    push :chat, {:name => "system", :message => "new #{client[:type]} client <#{client[:session]}>"}, :channel => client[:channel]
-    push :chat, {:name => "system", :message => "welcome <#{client[:session]}>"}, :to => client[:session]
+    puts "new client <#{client.session}> (type:#{client.type})"
+    push :chat, {:name => "system", :message => "new #{client.type} client <#{client.session}>"}, :channel => client.channel
+    push :chat, {:name => "system", :message => "welcome <#{client.session}>"}, :to => client.session
   end
 
   io.on :disconnect do |client|
-    puts "disconnect client <#{client[:session]}> (type:#{client[:type]})"
-    push :chat, {:name => "system", :message => "bye <#{client[:session]}>"}, :channel => client[:channel]
+    puts "disconnect client <#{client.session}> (type:#{client.type})"
+    push :chat, {:name => "system", :message => "bye <#{client.session}>"}, :channel => client.channel
   end
 
   io.on :chat do |data, client|
-    puts "#{data['name']} : #{data['message']}  (session:#{client[:session]} channel:#{client[:channel]} type:#{client[:type]})"
-    push :chat, data, :channel => client[:channel]
+    puts "#{data['name']} : #{data['message']}  (session:#{client.session} channel:#{client.channel} type:#{client.type})"
+    push :chat, data, :channel => client.channel
   end
 
   io.on :error do |err|

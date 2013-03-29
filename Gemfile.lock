@@ -4,6 +4,7 @@ PATH
     sinatra-rocketio (0.1.2)
       event_emitter (>= 0.2.4)
       eventmachine (>= 1.0.0)
+      hashie
       sinatra
       sinatra-cometio (>= 0.4.3)
       sinatra-websocketio (>= 0.2.2)
@@ -20,6 +21,7 @@ GEM
     eventmachine (1.0.3)
     haml (4.0.1)
       tilt
+    hashie (1.2.0)
     http_parser.rb (0.5.3)
     httparty (0.10.2)
       multi_json (~> 1.0)

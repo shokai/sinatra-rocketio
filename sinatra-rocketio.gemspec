@@ -30,4 +30,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency "sinatra"
   gem.add_dependency "eventmachine", ">= 1.0.0"
   gem.add_dependency "event_emitter", ">= 0.2.4"
+  gem.add_dependency "hashie"
 end
