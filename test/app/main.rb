@@ -25,4 +25,9 @@ class TestApp < Sinatra::Base
     push :message, data, :to => data['to']
   end
 
+  io.on :to_channel do |data, client|
+    puts "message to channel:#{client.channel} <type:#{client.type}> - #{data.to_json}"
+    push :to_channel, data, :channel => client.channel
+  end
+
 end
