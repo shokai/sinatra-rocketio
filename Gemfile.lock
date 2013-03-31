@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sinatra-rocketio (0.1.2)
+    sinatra-rocketio (0.2.0)
       event_emitter (>= 0.2.4)
       eventmachine (>= 1.0.0)
       hashie
@@ -21,7 +21,7 @@ GEM
     eventmachine (1.0.3)
     haml (4.0.1)
       tilt
-    hashie (1.2.0)
+    hashie (2.0.3)
     http_parser.rb (0.5.3)
     httparty (0.10.2)
       multi_json (~> 1.0)

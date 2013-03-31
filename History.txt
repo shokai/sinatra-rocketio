@@ -1,3 +1,10 @@
+=== 0.2.0 2013-03-31
+
+* add "channel" for grouping clients
+* update tests
+* Sinatra::RocketIO.sessions
+* use Sinatra::RocketIO::ClientInfo in server side events
+
 === 0.1.2 2013-03-25
 
 * retry get /rocketio/settings
