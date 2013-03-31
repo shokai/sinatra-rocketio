@@ -18,8 +18,8 @@ Requirements
 ------------
 * Ruby 1.8.7 or 1.9.2 or 1.9.3 or 2.0.0
 * Sinatra 1.3.0+
-* EventMachine
-* jQuery
+* [EventMachine](http://rubyeventmachine.com)
+* [jQuery](http://jquery.com)
 
 
 Usage
@@ -67,7 +67,7 @@ io.on("light", function(data){
 Client Side
 
 ```javascript
-io.on("connect", function(session){
+io.on("connect", function(){
   io.push("chat", {name: "shokai", message: "hello"}); // client -> server
 });
 ```
@@ -75,8 +75,8 @@ io.on("connect", function(session){
 Server Side
 
 ```ruby
-io.on :chat do |data, session, type|
-  puts "#{data['name']} : #{data['message']}  <#{session}> type:#{type}"
+io.on :chat do |data, client|
+  puts "#{data['name']} : #{data['message']}  <#{client.session}> type:#{client.type}"
 end
 ## => "shokai : hello  <12abcde345f6g7h8ijk> type:websocket"
 ```
@@ -86,21 +86,21 @@ end
 Client Side
 
 ```javascript
-io.on("connect", function(session){
-  alert("connect!!");
+io.on("connect", function(){
+  alert("connect!! "+io.session);
 });
 ```
 
 Server Side
 
 ```ruby
-io.on :connect do |session, type|
-  puts "new client <#{session}> type:#{type}"
+io.on :connect do |client|
+  puts "new client <#{client.session}> type:#{client.type}"
   io.push :hello, "hello new client!!"
 end
 
-io.on :disconnect do |session, type|
-  puts "client disconnected <#{session}> type:#{type}"
+io.on :disconnect do |client|
+  puts "client disconnected <#{client.session}> type:#{client.type}"
 end
 ```
 
@@ -119,8 +119,8 @@ io.on("error", function(err){
 Server Side
 
 ```ruby
-event_id = io.on :chat do |data, from, type|
-  puts "#{data} - from:#{from} type:#{type}"
+event_id = io.on :chat do |data, client|
+  puts "chat #{data} - from:#{client.session} type:#{client.type}"
 end
 io.removeListener event_id
 ```
@@ -145,6 +145,40 @@ or
 
 ```javascript
 io.removeListener("error");  // remove all "error" listener
+```
+
+
+### Chanel
+
+make client groups.
+
+Client Side
+```javascript
+var io = new RocketIO({channel: "ch1"}).connect();  // set channel "ch1"
+
+io.on("connect", function(){
+  io.push("hi", "haaaaaaaai!!");
+});
+
+io.on("announce", function(msg){
+  alert(msg);
+  // => alert "new client a1b2cde345fg in ch1"
+});
+```
+
+Server Side
+```ruby
+io = Sinatra::RocketIO
+
+io.on :connect do |client|
+  msg = "new client #{client.session} in #{client.channel}"
+  io.push :announce, msg, :channel => client.channel  # to all clients in Channel "ch1"
+end
+
+io.on :hi do |msg, client|
+  puts "client says #{msg} (channel:#{client.channel})"
+  # => "client says haaaaaaaai!! (channel:ch1)"
+end
 ```
 
 
