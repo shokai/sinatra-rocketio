@@ -7,18 +7,18 @@ class ChatApp < Sinatra::Base
   end
 
   io.on :connect do |client|
-    puts "new client  - #{client.to_h}"
+    puts "new client  - #{client}"
     push :chat, {:name => "system", :message => "new #{client.type} client <#{client.session}>"}, :channel => client.channel
     push :chat, {:name => "system", :message => "welcome <#{client.session}>"}, :to => client.session
   end
 
   io.on :disconnect do |client|
-    puts "disconnect client  - #{client.to_h}"
+    puts "disconnect client  - #{client}"
     push :chat, {:name => "system", :message => "bye <#{client.session}>"}, :channel => client.channel
   end
 
   io.on :chat do |data, client|
-    puts "#{data['name']} : #{data['message']}  - #{client.to_h}"
+    puts "#{data['name']} : #{data['message']}  - #{client}"
     push :chat, data, :channel => client.channel
   end
 

@@ -39,9 +39,9 @@ Sinatra::RocketIO.once :start do
     Sinatra::CometIO.on :* do |event_name, *args|
       event_name = :__connect if event_name == :connect
       if args.size > 1
-        Sinatra::RocketIO.emit event_name, args[0], Hashie::Mash.new(:session => args[1], :channel => Sinatra::RocketIO.channels[args[1]], :type => :comet)
+        Sinatra::RocketIO.emit event_name, args[0], Sinatra::RocketIO::ClientInfo.new(:session => args[1], :channel => Sinatra::RocketIO.channels[args[1]], :type => :comet)
       else
-        Sinatra::RocketIO.emit event_name, Hashie::Mash.new(:session => args[0], :channel => Sinatra::RocketIO.channels[args[0]], :type => :comet)
+        Sinatra::RocketIO.emit event_name, Sinatra::RocketIO::ClientInfo.new(:session => args[0], :channel => Sinatra::RocketIO.channels[args[0]], :type => :comet)
       end
     end
   end
@@ -49,9 +49,9 @@ Sinatra::RocketIO.once :start do
     Sinatra::WebSocketIO.on :* do |event_name, *args|
       event_name = :__connect if event_name == :connect
       if args.size > 1
-        Sinatra::RocketIO.emit event_name, args[0], Hashie::Mash.new(:session => args[1], :channel => Sinatra::RocketIO.channels[args[1]], :type => :websocket)
+        Sinatra::RocketIO.emit event_name, args[0], Sinatra::RocketIO::ClientInfo.new(:session => args[1], :channel => Sinatra::RocketIO.channels[args[1]], :type => :websocket)
       else
-        Sinatra::RocketIO.emit event_name, Hashie::Mash.new(:session => args[0], :channel => Sinatra::RocketIO.channels[args[0]], :type => :websocket)
+        Sinatra::RocketIO.emit event_name, Sinatra::RocketIO::ClientInfo.new(:session => args[0], :channel => Sinatra::RocketIO.channels[args[0]], :type => :websocket)
       end
     end
   end
