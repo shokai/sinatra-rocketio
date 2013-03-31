@@ -11,7 +11,7 @@ sinatra-rocketio
 Installation
 ------------
 
-    gem install sinatra-rocketio
+    % gem install sinatra-rocketio
 
 
 Requirements
