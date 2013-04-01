@@ -1,3 +1,7 @@
+=== 0.2.1 2013-04-01
+
+* bugfix client connect event
+
 === 0.2.0 2013-03-31
 
 * add "channel" for grouping clients
