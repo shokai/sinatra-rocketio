@@ -6,7 +6,7 @@ PATH
       eventmachine (>= 1.0.0)
       hashie
       sinatra
-      sinatra-cometio (>= 0.4.3)
+      sinatra-cometio (>= 0.5.0)
       sinatra-websocketio (>= 0.2.3)
 
 GEM
@@ -41,8 +41,8 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.3)
       tilt (~> 1.3, >= 1.3.3)
-    sinatra-cometio (0.4.3)
-      event_emitter (>= 0.2.4)
+    sinatra-cometio (0.5.0)
+      event_emitter (>= 0.2.5)
       eventmachine (>= 1.0.0)
       httparty (>= 0.10.2)
       json (>= 1.7.0)
