@@ -30,10 +30,16 @@ module Sinatra
       @@options = {}
       opts.each do |k,v|
         k = k.to_sym
-        if default_options.include? k
-          @@options[k] = default_options[k][1].call(v) ? v : default_options[k][0]
+        unless default_options.include? k
+          STDERR.puts "!! #{self} setting - \"#{k}\" is not valid key"
         else
-          @@options[k] = v
+          unless default_options[k][1].call(v)
+            default = default_options[k][0]
+            STDERR.puts "!! #{self} setting - \"#{k} => #{v}\" is not valid. set default \"#{k} => #{default}\""
+            @@options[k] = default
+          else
+            @@options[k] = v
+          end
         end
       end
       default_options.each do |k, v|
