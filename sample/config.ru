@@ -14,7 +14,7 @@ require 'sass'
 require File.dirname(__FILE__)+'/main'
 
 set :haml, :escape_html => true
-set :cometio, :timeout => 120
+set :cometio, :timeout => 120, :post_interval => 2
 set :websocketio, :port => (ENV['WS_PORT'].to_i || 8080)
 set :rocketio, :comet => true, :websocket => true
 
