@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sinatra-rocketio (0.2.2)
+    sinatra-rocketio (0.2.3)
       event_emitter (>= 0.2.5)
       eventmachine (>= 1.0.0)
       hashie
