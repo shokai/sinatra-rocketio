@@ -15,7 +15,7 @@ require File.dirname(__FILE__)+'/main'
 
 set :haml, :escape_html => true
 set :cometio, :timeout => 120, :post_interval => 2
-set :websocketio, :port => (ENV['WS_PORT'].to_i || 8080)
+set :websocketio, :port => (ENV['WS_PORT'] || 8080).to_i
 set :rocketio, :comet => true, :websocket => true
 
 case RUBY_PLATFORM
