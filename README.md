@@ -184,10 +184,17 @@ end
 
 Sample App
 ----------
-chat app
 
+### hello world
+- https://github.com/shokai/rocketio-hello-world
+
+
+### chat app
 - https://github.com/shokai/sinatra-rocketio/tree/master/sample
 - https://github.com/shokai/rocketio-chat-sample
+
+
+### arduino integration
 - https://github.com/shokai/rocketio-arduino-sample
 
 
