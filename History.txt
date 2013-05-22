@@ -1,3 +1,9 @@
+=== 0.2.4 2013-05-23
+
+* bugfix RocketIO start process
+* add classic style sample app
+* update gem dependencies
+
 === 0.2.3 2013-04-03
 
 * bugfix setting
