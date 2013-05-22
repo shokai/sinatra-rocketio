@@ -1,0 +1,29 @@
+!!! XHTML
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html', :charset => 'UTF-8'}
+    %title sinatra-rocketio chat
+    %link{:rel => 'stylesheet', :href => "/main.css", :type => 'text/css'}
+    :javascript
+      var channel = "#{@channel}";
+    %script{:type => 'text/javascript', :src => "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"}
+    %script{:type => 'text/javascript', :src => rocketio_js}
+    %script{:type => 'text/javascript', :src => "/js/chat.js"}
+
+  %body
+    %div#content
+      %div#header
+        %h1 rocketio chat [ch:#{@channel}]
+        %span#type
+      %div#main
+        %div#chat
+          %input{:id => 'name', :value => 'name', :size => 20}
+          %input{:id => 'message', :value => 'hello!!', :size => 80}
+          %input{:id => 'btn_send', :type => 'button', :value => 'post'}
+          %ul#timeline
+
+      %hr
+      %div#footer
+        sinatra-rocketio v#{Sinatra::RocketIO::VERSION} -
+        - src_url = 'https://github.com/shokai/sinatra-rocketio'
+        %a{:href => src_url} #{src_url}
