@@ -90,6 +90,13 @@ module Sinatra
         @io.push type, data if @io
       end
 
+      def wait(&block)
+        loop do
+          sleep 1
+          yield if block_given?
+        end
+      end
+
       def method_missing(name, *args)
         @io.__send__ name, *args
       end
