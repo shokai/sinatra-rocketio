@@ -1,3 +1,8 @@
+=== 0.2.5 2013-05-26
+
+* add function RocketIO::Client#wait
+* enable/disable websocket by ENV["WEBSOCKET"]=disable
+
 === 0.2.4 2013-05-23
 
 * bugfix RocketIO start process

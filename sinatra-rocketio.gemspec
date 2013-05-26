@@ -25,8 +25,8 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency "httparty"
   gem.add_development_dependency "json"
 
-  gem.add_dependency "sinatra-cometio", ">= 0.5.4"
-  gem.add_dependency "sinatra-websocketio", ">= 0.2.9"
+  gem.add_dependency "sinatra-cometio", ">= 0.5.6"
+  gem.add_dependency "sinatra-websocketio", ">= 0.3.0"
   gem.add_dependency "sinatra"
   gem.add_dependency "eventmachine", ">= 1.0.0"
   gem.add_dependency "event_emitter", ">= 0.2.5"
