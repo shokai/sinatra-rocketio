@@ -1,6 +1,6 @@
 require File.expand_path 'test_helper', File.dirname(__FILE__)
 
-class TestChannel < MiniTest::Unit::TestCase
+class TestChannel < MiniTest::Test
 
   def test_channel
     ## client1(comet, channel "aaa") --> server --> client3(websocket, channel "aaa")

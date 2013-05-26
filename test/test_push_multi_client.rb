@@ -1,6 +1,6 @@
 require File.expand_path 'test_helper', File.dirname(__FILE__)
 
-class TestPushMultiClient < MiniTest::Unit::TestCase
+class TestPushMultiClient < MiniTest::Test
 
   def test_push_multi
     ## client1(comet) --> server --> client2(comet) & client3(websocket)
