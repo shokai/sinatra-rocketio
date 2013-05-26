@@ -47,7 +47,7 @@ io.push :light, {:value => 150}, {:to => session_id} # to specific client
 Client Side
 
 ```html
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="<%= rocketio_js %>"></script>
 ```
 ```javascript
@@ -210,6 +210,35 @@ Sample App
 - https://github.com/shokai/rocketio-arduino-sample
 
 
+JavaScript Lib for browser
+--------------------------
+
+- [rocketio.js](https://raw.github.com/shokai/sinatra-rocketio/master/rocketio.js)
+- [rocketio.min.js](https://raw.github.com/shokai/sinatra-rocketio/master/rocketio.min.js)
+
+```html
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="/rocketio.min.js"></script>
+```
+```javascript
+var io = new RocketIO().connect("http://example.com");
+
+io.on("connect", function(){
+  alert(io.type + " connect!! " + io.session);
+});
+```
+
+### Generate JS Lib
+
+    % npm install -g uglify-js
+    % gem install bundler
+    % bundle install
+    % rake jslib
+
+=> rocketio.js and rocketio.min.js
+
+
+
 Test
 ----
 
@@ -223,15 +252,6 @@ start server
 run test
 
     % rake test
-
-
-Generate JS Lib for browser
----------------------------
-
-    % npm install -g uglify-js
-    % rake jslib
-
-=> rocketio.js and rocketio.min.js
 
 
 Contributing
