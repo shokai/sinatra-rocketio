@@ -225,6 +225,15 @@ run test
     % rake test
 
 
+Generate JS Lib for browser
+---------------------------
+
+    % npm install -g uglify-js
+    % rake jslib
+
+=> rocketio.js and rocketio.min.js
+
+
 Contributing
 ------------
 
