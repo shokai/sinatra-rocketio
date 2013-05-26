@@ -9,7 +9,7 @@ class App
   end
 
   def self.ws_port
-    ENV['WS_PORT'] || 8080
+    ENV['WS_PORT'] || 9000
   end
 
   def self.url
