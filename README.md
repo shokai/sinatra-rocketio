@@ -213,8 +213,13 @@ Sample App
 JavaScript Lib for browser
 --------------------------
 
+### Download
+
 - [rocketio.js](https://raw.github.com/shokai/sinatra-rocketio/master/rocketio.js)
 - [rocketio.min.js](https://raw.github.com/shokai/sinatra-rocketio/master/rocketio.min.js)
+
+
+### Usage
 
 ```html
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
