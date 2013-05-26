@@ -32,7 +32,7 @@ Server Side
 require 'sinatra'
 require 'sinatra/rocketio'
 set :cometio, :timeout => 120, :post_interval => 2
-set :websocketio, :port => 8080
+set :websocketio, :port => 5001
 set :rocketio, :websocket => true, :comet => true # enable WebSocket and Comet
 
 run Sinatra::Application
@@ -180,6 +180,18 @@ io.on :hi do |msg, client|
   # => "client says haaaaaaaai!! (channel:ch1)"
 end
 ```
+
+
+### Config with ENV[]
+
+configure with ENV variables.
+
+    % export WS_PORT=9000
+    % export WEBSOCKET=disable
+    % export COMET=enable
+    % bundle exec rackup config.ru  #=> start sinatra app
+
+disable comet and enable websocket on port 9000.
 
 
 Sample App

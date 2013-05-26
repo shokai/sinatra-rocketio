@@ -11,8 +11,14 @@ module Sinatra
 
     def self.default_options
       {
-        :comet => [true, lambda{|v| [true, false].include? v }],
-        :websocket => [true, lambda{|v| [true, false].include? v }]
+        :comet     => [
+                       (ENV["COMET"].to_s =~ /^(false|disable)$/i ? false : true),
+                       lambda{|v| [true, false].include? v }
+                      ],
+        :websocket => [
+                       (ENV["WEBSOCKET"].to_s =~ /^(false|disable)$/i ? false : true),
+                       lambda{|v| [true, false].include? v }
+                      ]
       }
     end
 
