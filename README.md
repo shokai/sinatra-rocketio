@@ -31,7 +31,7 @@ Server Side
 ```ruby
 require 'sinatra'
 require 'sinatra/rocketio'
-set :cometio, :timeout => 120, :post_interval => 2
+set :cometio, :timeout => 120, :post_interval => 2, :allow_crossdomain => false
 set :websocketio, :port => 5001
 set :rocketio, :websocket => true, :comet => true # enable WebSocket and Comet
 
