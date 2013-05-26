@@ -1,3 +1,8 @@
+=== 0.2.6 2013-05-27
+
+* JS Lib for browser
+* allow cross-domain access to /rocketio/settings
+
 === 0.2.5 2013-05-26
 
 * add function RocketIO::Client#wait
