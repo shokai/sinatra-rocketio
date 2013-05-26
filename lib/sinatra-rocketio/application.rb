@@ -7,6 +7,7 @@ module Sinatra
       app.helpers  Sinatra::RocketIO::Helpers
       app.get '/rocketio/settings' do
         content_type 'application/json'
+        response["Access-Control-Allow-Origin"] = "*"
         @setting_json ||= (
                            setting = {}
                            setting[:websocket] = websocketio_url if Sinatra::RocketIO.options[:websocket]
