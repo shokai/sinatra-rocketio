@@ -1,6 +1,6 @@
-// RocketIO.js v0.2.5 (websocketio:v0.3.1, cometio:v0.5.7)
+// RocketIO.js v0.2.6 (websocketio:v0.3.1, cometio:v0.5.7)
 // https://github.com/shokai/sinatra-rocketio
-// (c) 2012-2013 Sho Hashimoto <hashimoto@shokai.org>
+// (c) 2013 Sho Hashimoto <hashimoto@shokai.org>
 // The MIT License
 var RocketIO = function(opts){
   new EventEmitter().apply(this);
