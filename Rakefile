@@ -5,6 +5,14 @@ Rake::TestTask.new do |t|
   t.pattern = "test/test_*.rb"
 end
 
+desc "Start test server"
+task :test_server do
+  require File.expand_path 'test/app', File.dirname(__FILE__)
+  App.start
+end
+
+task :default => :test
+
 desc "generate JavaScript lib for browser"
 task :jslib do
   dest = "rocketio.js"
@@ -32,11 +40,3 @@ task :jslib do
   system "uglifyjs #{dest} >> #{dest_min}"
   puts " => #{dest_min}"
 end
-
-desc "Start test server"
-task :test_server do
-  require File.expand_path 'test/app', File.dirname(__FILE__)
-  App.start
-end
-
-task :default => :test
