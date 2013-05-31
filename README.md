@@ -40,8 +40,11 @@ run Sinatra::Application
 ```ruby
 io = Sinatra::RocketIO
 
-io.push :temperature, 35  # to all clients
-io.push :light, {:value => 150}, {:to => session_id} # to specific client
+io.on :connect do |client|
+  puts "new client available - <#{client.session}> type:#{client.type}"
+  io.push :temperature, 35  # to all clients
+  io.push :light, {:value => 150}, {:to => client.session} # to specific client
+end
 ```
 
 Client Side
