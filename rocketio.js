@@ -1,4 +1,4 @@
-// RocketIO.js v0.2.6 (websocketio:v0.3.1, cometio:v0.5.7)
+// RocketIO.js v0.2.6 (websocketio:v0.3.3, cometio:v0.5.8)
 // https://github.com/shokai/sinatra-rocketio
 // (c) 2013 Sho Hashimoto <hashimoto@shokai.org>
 // The MIT License
@@ -148,7 +148,7 @@ var CometIO = function(url, opts){
     if(!running) return;
     $.ajax(
       {
-        url : self.url,
+        url : self.url+"?"+(new Date()-0),
         data : {session : self.session},
         success : function(data_arr){
           if(data_arr !== null && typeof data_arr == "object" && !!data_arr.length){
@@ -198,13 +198,14 @@ var WebSocketIO = function(url, opts){
     var url = self.session ? self.url+"/session="+self.session : self.url;
     self.websocket = new WebSocket(url);
     self.websocket.onmessage = function(e){
+      var data_ = null;
       try{
-        var data_ = JSON.parse(e.data);
-        self.emit(data_.type, data_.data);
+        data_ = JSON.parse(e.data);
       }
       catch(e){
         self.emit("error", "WebSocketIO data parse error");
       }
+      if(!!data_) self.emit(data_.type, data_.data);
     };
     self.websocket.onclose = function(){
       if(self.connecting){
