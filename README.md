@@ -4,7 +4,7 @@ sinatra-rocketio
 * Node.js like I/O plugin for Sinatra.
 * Automatically selects from Comet and WebSocket.
 * https://github.com/shokai/sinatra-rocketio
-* https://github.com/shokai/sinatra-rocketio/wiki
+* [Wiki](https://github.com/shokai/sinatra-rocketio/wiki)
 * [Handle 10K+ clients on 1 process](https://github.com/shokai/sinatra-websocketio/wiki/C10K)
 
 
@@ -197,20 +197,9 @@ configure with ENV variables.
 disable comet and enable websocket on port 9000.
 
 
-Sample App
-----------
-
-### hello world
-- https://github.com/shokai/rocketio-hello-world
-
-
-### chat app
-- https://github.com/shokai/sinatra-rocketio/tree/master/sample
-- https://github.com/shokai/rocketio-chat-sample
-
-
-### arduino integration
-- https://github.com/shokai/rocketio-arduino-sample
+Sample Apps
+-----------
+- https://github.com/shokai/sinatra-rocketio/wiki/Sample-Apps
 
 
 JavaScript Lib for browser
