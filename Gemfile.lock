@@ -1,13 +1,13 @@
 PATH
   remote: .
   specs:
-    sinatra-rocketio (0.2.6)
+    sinatra-rocketio (0.3.0)
       event_emitter (>= 0.2.5)
       eventmachine (>= 1.0.0)
       hashie
       sinatra
-      sinatra-cometio (>= 0.5.6)
-      sinatra-websocketio (>= 0.3.0)
+      sinatra-cometio (>= 0.5.9)
+      sinatra-websocketio (>= 0.3.7)
 
 GEM
   remote: https://rubygems.org/
