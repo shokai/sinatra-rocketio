@@ -41,7 +41,7 @@ run Sinatra::Application
 io = Sinatra::RocketIO
 
 io.on :connect do |client|
-  puts "new client available - <#{client.session}> type:#{client.type}"
+  puts "new client available - <#{client.session}> type:#{client.type} from:#{client.address}"
   io.push :temperature, 35  # to all clients
   io.push :light, {:value => 150}, {:to => client.session} # to specific client
 end
@@ -79,7 +79,7 @@ Server Side
 
 ```ruby
 io.on :chat do |data, client|
-  puts "#{data['name']} : #{data['message']}  <#{client.session}> type:#{client.type}"
+  puts "#{data['name']} : #{data['message']}  <#{client.session}> type:#{client.type} address:#{client.address}"
 end
 ## => "shokai : hello  <12abcde345f6g7h8ijk> type:websocket"
 ```
@@ -98,7 +98,7 @@ Server Side
 
 ```ruby
 io.on :connect do |client|
-  puts "new client <#{client.session}> type:#{client.type}"
+  puts "new client <#{client.session}> type:#{client.type} address:#{client.address}"
   io.push :hello, "hello new client!!"
 end
 
