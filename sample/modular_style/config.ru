@@ -1,12 +1,10 @@
 require 'rubygems'
-require 'bundler/setup'
-Bundler.require
+$:.unshift File.expand_path '../../lib', File.dirname(__FILE__)
 require 'sinatra'
 require 'sinatra/base'
 if development?
   $stdout.sync = true
   require 'sinatra/reloader'
-  $:.unshift File.expand_path '../../lib', File.dirname(__FILE__)
 end
 require 'sinatra/rocketio'
 require 'haml'
@@ -15,7 +13,7 @@ require File.dirname(__FILE__)+'/main'
 
 set :haml, :escape_html => true
 set :cometio, :timeout => 120, :post_interval => 2, :allow_crossdomain => true
-set :websocketio, :port => (ENV['WS_PORT'] || 8080).to_i
+set :websocketio, :port => (ENV['WS_PORT'] || 9000).to_i
 set :rocketio, :comet => true, :websocket => true
 
 case RUBY_PLATFORM
