@@ -38,20 +38,26 @@ Sinatra::RocketIO.once :start do
   if options[:comet]
     Sinatra::CometIO.on :* do |event_name, *args|
       event_name = :__connect if event_name == :connect
+      session_id = args.size > 1 ? args[1] : args[0]
+      address = sessions.include?(session_id) ? sessions[session_id][:remote_addr] : nil
+      info = Sinatra::RocketIO::ClientInfo.new(:session => session_id, :address => address, :channel => Sinatra::RocketIO.channels[session_id], :type => :comet)
       if args.size > 1
-        Sinatra::RocketIO.emit event_name, args[0], Sinatra::RocketIO::ClientInfo.new(:session => args[1], :address => sessions[args[1]][:remote_addr], :channel => Sinatra::RocketIO.channels[args[1]], :type => :comet)
+        Sinatra::RocketIO.emit event_name, args[0], info
       else
-        Sinatra::RocketIO.emit event_name, Sinatra::RocketIO::ClientInfo.new(:session => args[0], :address => sessions[args[0]][:remote_addr], :channel => Sinatra::RocketIO.channels[args[0]], :type => :comet)
+        Sinatra::RocketIO.emit event_name, info
       end
     end
   end
   if options[:websocket]
     Sinatra::WebSocketIO.on :* do |event_name, *args|
       event_name = :__connect if event_name == :connect
+      session_id = args.size > 1 ? args[1] : args[0]
+      address = sessions.include?(session_id) ? sessions[session_id][:remote_addr] : nil
+      info = Sinatra::RocketIO::ClientInfo.new(:session => session_id, :address => address, :channel => Sinatra::RocketIO.channels[session_id], :type => :websocket)
       if args.size > 1
-        Sinatra::RocketIO.emit event_name, args[0], Sinatra::RocketIO::ClientInfo.new(:session => args[1], :address => sessions[args[1]][:remote_addr], :channel => Sinatra::RocketIO.channels[args[1]], :type => :websocket)
+        Sinatra::RocketIO.emit event_name, args[0], info
       else
-        Sinatra::RocketIO.emit event_name, Sinatra::RocketIO::ClientInfo.new(:session => args[0], :address => sessions[args[0]][:remote_addr], :channel => Sinatra::RocketIO.channels[args[0]], :type => :websocket)
+        Sinatra::RocketIO.emit event_name, info
       end
     end
   end
