@@ -1,3 +1,7 @@
+=== 0.3.1 2013-10-03
+
+* bugfix of push
+
 === 0.3.0 2013-10-02
 
 * get client address with Sinatra::RocketIO::ClientInfo#address
