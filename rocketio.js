@@ -1,4 +1,4 @@
-// RocketIO.js v0.3.1 (websocketio:v0.3.7, cometio:v0.5.9)
+// RocketIO.js v0.3.2 (websocketio:v0.4.0, cometio:v0.5.9)
 // https://github.com/shokai/sinatra-rocketio
 // (c) 2013 Sho Hashimoto <hashimoto@shokai.org>
 // The MIT License
