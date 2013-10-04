@@ -11,9 +11,9 @@ module Sinatra
       elsif opt.include? :channel
         channels.select{|session, channel|
           channel == opt[:channel].to_s
-        }.each do |session|
+        }.each{|session, channel|
           push type, data, :to => session
-        end
+        }
       else
         if options[:websocket]
           Sinatra::WebSocketIO.push type, data, opt
