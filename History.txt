@@ -1,3 +1,7 @@
+=== 0.3.2 2013-10-04
+
+* bugfix for channel push
+
 === 0.3.1 2013-10-03
 
 * bugfix of push
