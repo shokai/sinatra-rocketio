@@ -1,3 +1,7 @@
+=== 0.3.3 2013-10-05
+
+* MIT license
+
 === 0.3.2 2013-10-04
 
 * bugfix for channel push
